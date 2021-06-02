@@ -1,8 +1,9 @@
-import './styles/styles.scss';
-import _ from 'lodash';
-import Article from './article';
+import '../public/styles/styles.scss';
+import React from 'react';
+import { render } from 'react-dom'
+import App from './components/App'
 
-const article = new Article('New Article');
-
-console.log(article.toString() === article);
-console.log(_.isArray([1, 2, 3]), 'lodash');
+render(
+    <App/>,
+    document.getElementById("root")
+)

@@ -26,8 +26,13 @@
     "sass": "^1.32.11"
   },
   "dependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/preset-react": "^7.13.13",
     "jquery": "^3.6.0",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "scripts": {
     "dev": "webpack --mode=development",
@@ -42,5 +47,3 @@
     }
   }
 }
-
-

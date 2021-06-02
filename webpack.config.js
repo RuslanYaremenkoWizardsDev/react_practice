@@ -7,12 +7,6 @@ const pages = [
     {
         template: path.resolve(__dirname, 'src/index.html'),
         filename: 'index.html',
-        chunks: ['bundle', 'analytics'],
-    },
-    {
-        template: path.resolve(__dirname, 'src/login/login.html'),
-        filename: 'login.html',
-        chunks: ['login', 'analytics', 'babel'],
     },
 ];
 const getFileLoader = (regExp) => ({
@@ -34,9 +28,6 @@ const getPath = (url) => path.resolve(__dirname, `src/${url}`);
 module.exports = {
     entry: {
         bundle: getPath('index.js'),
-        analytics: getPath('analytics.js'),
-        login: getPath('login/login.js'),
-        babel: getPath('login/babel.js'),
     },
     module: {
         rules: [
@@ -54,6 +45,16 @@ module.exports = {
                     },
                 },
             },
+            {
+                test: /\.(jsx|js)$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-react','@babel/preset-env'],
+                    },
+                },
+            },
         ],
     },
     plugins: [
@@ -62,7 +63,7 @@ module.exports = {
         new CopyWebpackPlugin({
             patterns: [
                 {
-                    from: path.resolve(__dirname, 'src/assets/images'),
+                    from: path.resolve(__dirname, 'public/assets/images'),
                     to: path.resolve(__dirname, 'dist/assets/images'),
                 },
             ],
